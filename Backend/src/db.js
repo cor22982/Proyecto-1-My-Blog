@@ -52,7 +52,7 @@ export async function deletePost(postId) {
 
 
 export async function login(user, password_md5) {
-  const result = await conn.query('SELECT id,rol FROM autentificacion WHERE nombre = $1 AND password = $2;', [user, password_md5])
+  const result = await conn.query('SELECT id FROM autentificacion WHERE nombre = $1 AND password = $2;', [user, password_md5])
   if (result.rows.length === 1) {
     const { id, rol } = result.rows[0];
     return { id, rol };
