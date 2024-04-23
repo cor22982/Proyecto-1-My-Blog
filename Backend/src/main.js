@@ -46,7 +46,7 @@ app.get('/posts/:postId', async (req, res) => {
   }
 })
 
-const PORT = 22982
+const PORT = 2000
 app.listen(PORT, () => {
   console.log(`Server listening at http://127.0.0.1:${PORT}`)
 })
