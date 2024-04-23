@@ -79,7 +79,7 @@ app.post('/login', async (req, res) => {
 app.post('/posts', async (req, res) => {
   const { authorization } = req.headers
   const access_token = authorization.substring(7)
-  if (validateRequest(access_token)){
+  if (validateToken(access_token)){
     try {
       const {
         Pearson,
@@ -111,20 +111,24 @@ app.post('/posts', async (req, res) => {
 })
 
 app.put('/posts/:postId', async (req, res) => {
-  try {
-    const { postId } = req.params
-    const {
-      columna,
-      valor,
-    } = req.body
-    const result = await editOnePost(
-      postId,
-      columna,
-      valor,
-    )
-    res.status(200).json(result)
-  } catch (error) {
-    res.status(500).json({ error: 'Error del servidor.' })
+  const { authorization } = req.headers
+  const access_token = authorization.substring(7)
+  if (validateToken(access_token)){
+    try {
+      const { postId } = req.params
+      const {
+        columna,
+        valor,
+      } = req.body
+      const result = await editOnePost(
+        postId,
+        columna,
+        valor,
+      )
+      res.status(200).json(result)
+    } catch (error) {
+      res.status(500).json({ error: 'Error del servidor.' })
+    }
   }
 })
 

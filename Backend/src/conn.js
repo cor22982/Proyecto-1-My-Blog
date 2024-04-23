@@ -4,7 +4,7 @@ const { Client } = pg;
 const connectionData = {
   user: 'owner',
   host: 'localhost',
-  database: 'proyecto2',
+  database: 'Guatepedia',
   password: '36L8W7Nm',
   port: 5432,
 };
