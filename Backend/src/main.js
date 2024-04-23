@@ -7,6 +7,7 @@ import {
   createPost,
   editOnePost,
   deletePost,
+  login,
 // eslint-disable-next-line import/extensions
 } from './db.js'
 
@@ -54,33 +55,58 @@ app.get('/', (req, res) => {
   res.send('Hello from API BLOG')
 })
 app.use(validateRequest)
+
+
+app.post('/login', async (req, res) => {
+  const { username, password } = req.body
+  const success = await login(username, password)
+  console.log('success', success)
+  if (success) {
+    const user =  {
+      id: success.id,
+      username: username
+    }
+    const token = generateToken(user)
+    res.status(200)
+    res.json({"success": true, acces_token: token})
+    return
+  }
+
+  res.status(401)
+  res.send('{ "message": "not logged in" }')
+})
+
 app.post('/posts', async (req, res) => {
-  try {
-    const {
-      Pearson,
-      Fewdescription,
-      History,
-      Crucialevents,
-      Curiosities,
-      AlternativeText,
-      AlternativeDescription,
-      Textreferences,
-      images,
-    } = req.body
-    const result = await createPost(
-      Pearson,
-      Fewdescription,
-      History,
-      Crucialevents,
-      Curiosities,
-      AlternativeText,
-      AlternativeDescription,
-      Textreferences,
-      images,
-    )
-    res.status(200).json(result)
-  } catch (error) {
-    res.status(500).json({ error: 'Error interno del servidor' })
+  const { authorization } = req.headers
+  const access_token = authorization.substring(7)
+  if (validateRequest(access_token)){
+    try {
+      const {
+        Pearson,
+        Fewdescription,
+        History,
+        Crucialevents,
+        Curiosities,
+        AlternativeText,
+        AlternativeDescription,
+        Textreferences,
+        images,
+      } = req.body
+      const result = await createPost(
+        Pearson,
+        Fewdescription,
+        History,
+        Crucialevents,
+        Curiosities,
+        AlternativeText,
+        AlternativeDescription,
+        Textreferences,
+        images,
+      )
+      res.status(200).json(result)
+    } catch (error) {
+      res.status(500).json({ error: 'Error interno del servidor' })
+    }
   }
 })
 
@@ -103,13 +129,20 @@ app.put('/posts/:postId', async (req, res) => {
 })
 
 app.delete('/posts/:postId', async (req, res) => {
-  try {
-    const { postId } = req.params
-    const post = await deletePost(postId)
-    res.status(200).json(post)
-  } catch (error) {
-    res.status(500).json({ error: 'Error del servidor.' })
+  const { authorization } = req.headers
+  const access_token = authorization.substring(7)
+  if (validateToken(access_token)){  
+    try {
+      const { postId } = req.params
+      const post = await deletePost(postId)
+      res.status(200).json(post)
+    } catch (error) {
+      res.status(500).json({ error: 'Error del servidor.' })
+    }
+    return 
   }
+  res.status(403)
+  res.json([])
 })
 app.use((req, res) => {
   res.status(501).json({ error: 'Método no implementado' })
