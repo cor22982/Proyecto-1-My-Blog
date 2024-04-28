@@ -1,4 +1,4 @@
-button{
+.boton-boton{
   background: #0e73bb;
   margin-top: 20px;
   color: white;
@@ -9,6 +9,6 @@ button{
   border-radius: 10px;
 }
 
-button:hover{
+.boton-boton:hover{
   background: #257fc0;
 }

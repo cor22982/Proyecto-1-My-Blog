@@ -24,3 +24,7 @@ input:focus{
 .contenedor{
   margin-top: 15px;
 }
+
+.icon {
+  color: white;
+}

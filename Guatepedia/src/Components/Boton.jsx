@@ -2,7 +2,7 @@ import './Boton.css'
 import PropTypes from 'prop-types';
 const Boton = ({onClick, nombre}) => {
   return (
-    <button onClick={onClick}>{nombre}</button>
+    <button onClick={onClick} className='boton-boton'>{nombre}</button>
   )
 }
 

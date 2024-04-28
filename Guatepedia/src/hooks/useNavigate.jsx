@@ -1,6 +1,5 @@
 import { createContext, useContext, useState, useEffect } from 'react'
 import PropTypes from 'prop-types';
-
 const NavigationContext = createContext({ page: '/', navigate: () => {} })
 
 const NavigationProvider = ({ children }) => {
@@ -31,11 +30,8 @@ const useNavigate = () => {
 
 NavigationProvider.propTypes = {
   children: PropTypes.node.isRequired,
-};
+}
 
-const Navigation = {
-  Provider: NavigationProvider,
-  useNavigate: useNavigate
-};
-
-export default Navigation;
+// eslint-disable-next-line react-refresh/only-export-components
+export default useNavigate
+export { NavigationProvider }
