@@ -1,0 +1,26 @@
+input {
+  border: none;
+  outline: none;
+  background: #0d1017;
+  border: 2px solid #393d42;
+  color: white;
+  border-radius: 5px;
+  width: 300px;
+  height: 35px;
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+input:focus{
+  border: 2px solid #277ae0;
+}
+
+.titulo{
+  color: white;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.contenedor{
+  margin-top: 15px;
+}

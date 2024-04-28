@@ -1,0 +1,23 @@
+.texto-titulo{
+  color: white;
+  font-size: 40px;
+}
+
+.contenedor-login{
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contenedor-labels{
+  width: 400px;
+  height: 300px;
+  background-color: #161b21;
+  border: 1px solid #3c4345;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}

@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react'
 import PropTypes from 'prop-types';
+
 const NavigationContext = createContext({ page: '/', navigate: () => {} })
 
 const NavigationProvider = ({ children }) => {
@@ -32,5 +33,9 @@ NavigationProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default useNavigate
-export { NavigationProvider }
+const Navigation = {
+  Provider: NavigationProvider,
+  useNavigate: useNavigate
+};
+
+export default Navigation;
