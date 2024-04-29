@@ -11,19 +11,30 @@ const useApi = (link) => {
         'Content-Type': 'application/json'
       }
     };
-
     const response = await fetch(link, fetchOptions);
     const data = await response.json();
-
     if (response.ok) {
-     
       return data;
     }
-
     setError(data);
   };
 
-  return { error, llamado };
+  const llamadowithoutbody = async (metodo) => {
+    const fetchOptions = {
+      method: metodo,
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+    const response = await fetch(link, fetchOptions);
+    const data = await response.json();
+    if (response.ok) {
+      return data;
+    }
+    setError(data);
+  }
+
+  return { error, llamado, llamadowithoutbody };
 };
 
 export default useApi;
