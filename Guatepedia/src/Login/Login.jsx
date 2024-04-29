@@ -7,6 +7,8 @@ import { md5 } from 'js-md5'
 import useToken from '@hooks/useToken'
 import useNavigate from '@hooks/useNavigate'
 import useForm from '@hooks/useForm'
+import useApi from '@hooks/useApi';
+
 
 const schema = object({
   username: string().required(),
@@ -17,14 +19,18 @@ const Login = () => {
   const { navigate } = useNavigate()
   const { setToken } = useToken() 
   const { values, setValue, validate, errors } = useForm(schema)
+  const { error, llamado } = useApi('http://api.web05.lol/22982/login');
 
-  const loguearse = () => {
+
+
+  const loguearse = async () => {
     const formData = Object.keys(values).reduce((acc, key) => {
       acc[key] = key === 'password' ? md5(values[key]) : values[key];
       return acc;
     }, {});
-
-    console.log(formData)
+    const {acces_token} = await llamado (formData, 'POST')
+    setToken(acces_token)
+    navigate('/admin')
   }
 
   return (

@@ -1,8 +1,15 @@
 import './PantallaAdmin.css'
 import MenuButton from '@components/MenuButton';
-import {faHome, faPlus, faPen, faTrash} from '@fortawesome/free-solid-svg-icons';
+import {faHome, faPlus, faPen, faTrash, faRightFromBracket} from '@fortawesome/free-solid-svg-icons';
+import useNavigate from '@hooks/useNavigate'
 
 const PantallaAdmin = () => {
+  const { navigate } = useNavigate()
+
+  const salir = () => {
+    navigate('/')
+  }
+
   return(
     <div className="principal">
       <div className='menu'>
@@ -11,6 +18,14 @@ const PantallaAdmin = () => {
         <MenuButton nombre="Crear Post" icono={faPlus}></MenuButton>
         <MenuButton nombre="Editar Post" icono={faPen}></MenuButton>
         <MenuButton nombre="Eliminar Post" icono={faTrash}></MenuButton>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <MenuButton 
+          nombre="Salir" 
+          icono={faRightFromBracket}
+          onclick={salir}></MenuButton>
       </div>
       <div className='contenido'>
 

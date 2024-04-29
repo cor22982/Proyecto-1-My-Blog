@@ -22,9 +22,10 @@
   background: transparent;
   border: none;
   outline: none;
+  cursor: pointer;
+  height: 100%;
 }
 
-.boton:hover{}
 
 .contenedor-menu:hover{
   background: #1a282d;

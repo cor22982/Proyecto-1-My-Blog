@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { object } from 'yup'
+
 
 const useForm = (schema_, initialValues = {}) => {
-  const [ schema, setSchema ] = useState(schema_)
+  const [ schema] = useState(schema_)
   const [ values, setValues ] = useState(initialValues)
   const [ errors, setErrors ] = useState({})
 

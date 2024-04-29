@@ -1,10 +1,9 @@
 import { useState } from 'react';
 
-const useApi = (link, metodo) => {
-  const [respuesta, setRespuesta] = useState({});
+const useApi = (link) => {
   const [error, setError] = useState({});
   
-  const llamado = async (body) => {
+  const llamado = async (body,metodo) => {
     const fetchOptions = {
       method: metodo,
       body: JSON.stringify(body),
@@ -17,17 +16,17 @@ const useApi = (link, metodo) => {
     const data = await response.json();
 
     if (response.ok) {
-      setRespuesta(data);
-      return;
+     
+      return data;
     }
 
     setError(data);
   };
 
-  return { respuesta, error, llamado };
+  return { error, llamado };
 };
 
 export default useApi;
 
-// const { respuesta, error, llamado } = useApi('http://ejemplo.com/api', 'POST');
+// const { respuesta, error, llamado } = useApi('http://ejemplo.com/api');
 //llamado({ campo1: 'valor1', campo2: 'valor2' });
