@@ -1,0 +1,45 @@
+.tarjeta{
+  background-color: transparent;
+  height: 150px;
+  display: grid;
+  grid-template-columns: 1.4fr 3fr;
+  padding-top: 4px;
+  padding-bottom: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+  padding-left: 10px;
+  margin-top: 3px;
+  margin-bottom: 5px;
+}
+
+.imagen{
+  grid-column: 1;
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.contenido-tarjeta{
+  margin-left: 10px;
+  grid-column: 2;
+  background-color: transparent;
+
+}
+
+.tarjeta:hover{
+  background-color: #272a2c;
+}
+
+.linea{
+  border: 1px solid #212627;
+}
+
+.contenido-tarjeta h1{
+  color: white;
+  margin-top: 0.5px;
+}
+
+.contenido-tarjeta p{
+  color: #8e8e8e;
+  margin-top: 5px;
+}

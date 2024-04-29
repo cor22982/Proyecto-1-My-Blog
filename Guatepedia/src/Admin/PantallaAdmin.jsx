@@ -16,8 +16,7 @@ const PantallaAdmin = () => {
       <h1 style={{color: 'white', marginLeft: '10px'}}>Administrador</h1>
         <MenuButton nombre="Home" icono={faHome}></MenuButton>
         <MenuButton nombre="Crear Post" icono={faPlus}></MenuButton>
-        <MenuButton nombre="Editar Post" icono={faPen}></MenuButton>
-        <MenuButton nombre="Eliminar Post" icono={faTrash}></MenuButton>
+        
         <br></br>
         <br></br>
         <br></br>
