@@ -78,8 +78,7 @@ app.post('/login', async (req, res) => {
 
 app.post('/posts', async (req, res) => {
   const { authorization } = req.headers
-  const access_token = authorization.substring(7)
-  if (validateToken(access_token)){
+  if (validateToken(authorization)){
     try {
       const {
         Pearson,
