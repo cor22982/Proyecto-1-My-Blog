@@ -112,8 +112,7 @@ app.post('/posts', async (req, res) => {
 
 app.put('/posts/:postId', async (req, res) => {
   const { authorization } = req.headers
-  const access_token = authorization.substring(7)
-  if (validateToken(access_token)){
+  if (validateToken(authorization)){
     try {
       const { postId } = req.params
       const {
@@ -134,8 +133,7 @@ app.put('/posts/:postId', async (req, res) => {
 
 app.delete('/posts/:postId', async (req, res) => {
   const { authorization } = req.headers
-  const access_token = authorization.substring(7)
-  if (validateToken(access_token)){  
+  if (validateToken(authorization)){  
     try {
       const { postId } = req.params
       const post = await deletePost(postId)
