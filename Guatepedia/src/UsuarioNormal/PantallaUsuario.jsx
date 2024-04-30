@@ -45,7 +45,7 @@ const PantallaUsuario = () => {
             key={post.id}
             titulo={post.pearson}
             descripcion={post.few_description}
-            fecha={post.fecha}
+            fecha={post.fecha_post}
             imageurl={post.images}></Tarjeta>
         ))}
 
