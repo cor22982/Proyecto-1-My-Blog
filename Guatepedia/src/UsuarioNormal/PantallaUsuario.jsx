@@ -47,6 +47,7 @@ const PantallaUsuario = () => {
             descripcion={post.few_description}
             fecha={post.fecha_post}
             imageurl={post.images}></Tarjeta>
+            
         ))}
 
       </div>
