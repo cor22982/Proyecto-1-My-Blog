@@ -1,0 +1,60 @@
+.button-back{
+  background-color: #232629;
+  cursor: pointer;
+  border-radius: 100%;
+  height: 55px;
+  width: 55px;
+  margin-right: 10px;
+}
+
+.button-back:hover{
+  background-color: #3a3e42;
+  
+}
+
+.icon-back{
+  font-size: 25px;
+  color: white;
+}
+
+.titulo-back{
+  color: white;
+  font-size: 22px;
+}
+
+.tituloboton{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.titulo-contenido{
+  color: white;
+  font-size: 60px;
+}
+
+.titulo2-contenido{
+  color: white;
+  font-size: 30px;
+}
+
+.contenido-contenido{
+  font-size: 18px;
+  color: #8f8f8f;
+}
+
+.imagen-contenido{
+  width: 300px;
+  height: 400px;
+  object-fit: cover;
+  float: left;
+}
+
+.contenido-imagen{
+  display: flex;
+  flex-direction: column;
+}
+.contenido{
+  display: flex;
+ 
+}

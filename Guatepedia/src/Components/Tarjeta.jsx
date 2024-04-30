@@ -1,12 +1,12 @@
 import './Tarjeta.css'
 import PropTypes from 'prop-types';
 
-const Tarjeta = ({imageurl, titulo, fecha, descripcion}) => {
+const Tarjeta = ({imageurl, titulo, fecha, descripcion, onclick}) => {
 
   return (
     <div>
       <div className='linea'></div>
-      <div className="tarjeta">
+      <div className="tarjeta" onClick={onclick}>
         <img className='imagen' src={imageurl}></img>
         <div className='contenido-tarjeta'>
           <h1>{titulo}</h1>
@@ -24,6 +24,7 @@ Tarjeta.propTypes = {
   titulo: PropTypes.string,
   fecha: PropTypes.string,
   descripcion: PropTypes.string,
+  onclick: PropTypes.func,
 }
 
 export default Tarjeta
