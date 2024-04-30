@@ -1,7 +1,7 @@
 import conn from './conn.js';
 
 export async function getAllPosts() {
-  const result = await conn.query("SELECT *, to_date(to_char(timestamp, 'YYYY/MM/DD'), 'YYYY/MM/DD') AS fecha_post FROM Guatepedia;");
+  const result = await conn.query("SELECT *, to_date(to_char(fecha, 'YYYY/MM/DD'), 'YYYY/MM/DD') AS fecha_post FROM Guatepedia;");
   return result.rows;
 }
 
