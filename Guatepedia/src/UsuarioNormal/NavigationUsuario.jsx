@@ -1,9 +1,11 @@
 import Posts from './Posts';
 import useNavigate from '@hooks/useNavigate';
 import Descripcion from './Descripcion';
+import { useState } from 'react';
 const rutas = {
   '/': {
-    component: Posts
+    component: Posts,
+    setpostid : null,
   },
   '/descripcion':{
     component: Descripcion,
@@ -12,6 +14,7 @@ const rutas = {
 };
 
 const NavigationUsuario = () => {
+  const [post, setPost] = useState(null)
   const { page, navigate } = useNavigate();
   const CurrentPage = rutas[page]?.component || Posts;
   let clickear 
@@ -19,13 +22,20 @@ const NavigationUsuario = () => {
     clickear = () => {
       navigate('/') 
     }
+    return ( 
+      <div>
+        <CurrentPage click={clickear} postid={post}/>
+      </div>
+    );
   }
 
   return ( 
     <div>
-      <CurrentPage click={clickear}/>
+      <CurrentPage setpostid={setPost}/>
     </div>
   );
+
+
 };
 
 export default NavigationUsuario;

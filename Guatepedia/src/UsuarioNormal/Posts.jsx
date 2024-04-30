@@ -2,11 +2,14 @@ import Tarjeta from '@components/Tarjeta';
 import useApi from '@hooks/useApi';
 import { useEffect,useState } from 'react';
 import useNavigate from '@hooks/useNavigate';
+import PropTypes from 'prop-types';
 
-const Posts = () => {
+const Posts = ({setpostid}) => {
   const { navigate } = useNavigate()
-  const gotodescribe = () => {
+  const gotodescribe = (item) => {
+    setpostid(item)
     navigate('/descripcion')
+    
   }
   const {  llamadowithoutbody } = useApi('http://api.web05.lol/22982/posts');
   const [posts, setPosts] = useState([]);
@@ -22,7 +25,7 @@ const Posts = () => {
     };
 
     fetchData();
-  }, []);
+  }, [llamadowithoutbody]);
 
   return(
     <div>
@@ -33,11 +36,14 @@ const Posts = () => {
             descripcion={post.few_description}
             fecha={post.fecha_post.substring(0, post.fecha_post.indexOf("T"))}
             imageurl={post.images}
-            onclick={gotodescribe}></Tarjeta>
+            onclick={() => gotodescribe(post.id)}></Tarjeta>
             
         ))}
     </div>
   );
 }
 
+Posts.propTypes = {
+  setpostid: PropTypes.func,
+}
 export default Posts
