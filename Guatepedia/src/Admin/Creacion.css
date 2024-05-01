@@ -1,0 +1,21 @@
+.total{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.contenedor-postear{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 800px;
+  height: max-content;
+  background-color: #161b21;
+}
+
+.square1{
+  background-color: red;
+  position: sticky;
+  width: 100px;
+  height: 100px;
+}
