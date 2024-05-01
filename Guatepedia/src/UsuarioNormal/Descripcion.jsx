@@ -43,7 +43,9 @@ const Descripcion = ({click, postid}) => {
           <h2 className='titulo2-contenido'>Curiosidades</h2>
           <p className='contenido-contenido'>{postunico.curiosities}</p> 
           <h2 className='titulo2-contenido'>{postunico.alternativetext}</h2>
-          <p className='contenido-contenido'>{postunico.alternativedescription}</p> 
+          <p className='contenido-contenido'>{postunico.alternativedescription}</p>
+          <h2 className='titulo2-contenido'>Referencias</h2>
+          <a href={postunico.text_references}>Link de referencia</a>
     </div>
     
   )

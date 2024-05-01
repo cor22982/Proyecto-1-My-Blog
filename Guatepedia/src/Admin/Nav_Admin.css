@@ -1,0 +1,15 @@
+.principal{
+  display: grid;
+  width: 100vw; 
+  height: 100vh;
+  grid-template-columns: 1.5fr 6fr;
+}
+
+.menu {
+  grid-column: 1;
+  border-right: 1px solid #3c4345; /* Borde blanco solo en el lado derecho */
+}
+
+.contenido{
+  grid-column: 2;
+}
