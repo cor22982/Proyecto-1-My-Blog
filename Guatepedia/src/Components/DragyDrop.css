@@ -4,7 +4,7 @@
   border-radius: 5px;
   overflow: hidden;
   width: 730px;
-  background: #0d1017;
+  background: #0f0f0f;
 }
 .card .top {
   text-align: center;
@@ -25,13 +25,13 @@
   padding: 8px 13px;
   width: 100%;
   background: #0e73bb;
-}
+} 
 .card .drag-area{
   height: 150px;
   border-radius: 5px;
   border: 5px dashed #272a2c;
   color: #272a2c;
-  background: #0d1017;
+  background: #111111;
   display: flex;
   justify-content: center;
   align-items: center;

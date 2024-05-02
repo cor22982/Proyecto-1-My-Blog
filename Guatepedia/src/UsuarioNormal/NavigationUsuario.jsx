@@ -34,8 +34,6 @@ const NavigationUsuario = () => {
       <CurrentPage setpostid={setPost}/>
     </div>
   );
-
-
 };
 
 export default NavigationUsuario;

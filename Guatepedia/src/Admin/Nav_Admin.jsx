@@ -3,10 +3,11 @@ import { faHome, faPlus, faRightFromBracket } from '@fortawesome/free-solid-svg-
 import Creacion from './Creacion';
 import Inicio from './Inicio';
 import useNavigate from '@hooks/useNavigate';
+import Posts from '../UsuarioNormal/Posts';
 
 const routes = {
   '/': {
-    component: Inicio,
+    component: Posts, 
   },
   '/postear': {
     component: Creacion,
@@ -21,6 +22,10 @@ const Nav_Admin = () => {
   const nav_to = (item) => {
     navigate(item);
   };
+
+  const exit = () => {
+    window.location.reload();
+  }
 
   return (
     <div className="principal">
@@ -43,6 +48,7 @@ const Nav_Admin = () => {
         <MenuButton
           nombre="Salir"
           icono={faRightFromBracket}
+          onclick={exit}
         />
       </div>
       <div className="contenido">

@@ -1,0 +1,75 @@
+.text-area-edit{
+  width: 750px;
+  height: 65px;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background: #0f0f0f;
+  color: white;
+  border: 2px solid #4e4f50;
+  border-radius: 5px;
+}
+.edit-texteo{
+  display: flex;
+  flex-direction: row;
+}
+
+.edit-texteo{
+  font-size: 18px;
+  color: #8f8f8f;
+}
+
+.icon-edit{
+  cursor: pointer;
+}
+
+.texto-editable {
+  max-width: 750px; /* Establece el ancho máximo */
+  overflow: hidden; /* Oculta el contenido que excede el ancho */
+  white-space: pre-wrap; /* Conserva los saltos de línea y permite el ajuste de texto */
+  word-wrap: break-word; /* Permite que el texto se divida en varias líneas */
+}
+
+.contenedor-edit{
+  display: flex;
+  flex-direction: column;
+}
+.botones{
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+
+.boton-edit{
+  background-color: #141414;
+  color: white;
+  font-size: 20px;
+  margin-right: 15px;
+  margin-top: 11px;
+  border-radius: 15px;
+  cursor: pointer;
+  height: 40px;
+  width: 80px;
+  border: 2px solid #4e4f50;
+}
+
+.boton-edit:hover{
+  border: 2px solid #418fee;
+  
+}
+
+.icono-edit-1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background: #0b0f11;
+  border: 2px solid #4e4f50;
+}
+
+.icono-edit-1:hover{
+  border: 2px solid #418fee;
+}

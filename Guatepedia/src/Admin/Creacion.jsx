@@ -6,6 +6,8 @@ import { object, string } from 'yup'
 import useToken from '@hooks/useToken'
 import useForm from '@hooks/useForm'
 import useApi from '@hooks/useApi';
+import EditableText from '../Components/EditableText';
+
 
 const schema = object({
   Pearson: string().required(),
@@ -36,12 +38,16 @@ const Creacion = () => {
       });
     }
   }
+
+  const handleSave = (newValue) => {
+    console.log(newValue); // Hacer algo con el nuevo valor
+  };
   
 
   return (
-    <div className='total'>
+    <div className='total'> 
       <h1 style={{color: 'white'}}>CREAR POST</h1>
-      <div className="contenedor-postear">
+     
         <TextInputPost
           placeholder="Titulo"
           altura= "35px"
@@ -94,7 +100,7 @@ const Creacion = () => {
         <br></br>
         <br></br>
 
-      </div>
+      
     </div>
   );
 }
