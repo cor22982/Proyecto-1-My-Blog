@@ -29,11 +29,12 @@ const Creacion = () => {
     const headers = [
       { title: 'authorization', value: token }
     ];
-    const result = await llamadowithheader(headers,values,'POST')
-    Object.keys(values).forEach(key => {
-      setValue(key, '');
-    });
-    
+    const {success} = await llamadowithheader(headers,values,'POST')
+    if (success){
+      Object.keys(values).forEach(key => {
+        setValue(key, '');
+      });
+    }
   }
   
 
