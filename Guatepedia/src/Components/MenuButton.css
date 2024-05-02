@@ -29,4 +29,6 @@
 
 .contenedor-menu:hover{
   background: #1a282d;
+  transition: 0.4s;
+  opacity: 0.6;
 }

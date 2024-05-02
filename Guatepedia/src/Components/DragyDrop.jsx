@@ -1,6 +1,8 @@
 import './DragyDrop.css'
 import { useState, useRef } from 'react'
-const DragyDrop = () => {
+import PropTypes from 'prop-types';
+
+const DragyDrop = ({setval, name}) => {
   const [images, setImages] = useState([])
   const [isDragging, setIsDragging] = useState(false)
   const fileInputRef = useRef(null)
@@ -68,7 +70,7 @@ const DragyDrop = () => {
         reader.readAsDataURL(blob);
         reader.onloadend = () => {
           const base64data = reader.result; // Aquí tienes la imagen en formato base64
-          console.log(base64data);
+          setval(name,base64data)
           setImages([]); // Limpiar la lista de imágenes después de convertir la primera imagen
         };
       } catch (error) {
@@ -126,6 +128,11 @@ const DragyDrop = () => {
       </button>
     </div>
   )
+}
+
+DragyDrop.propTypes = {
+  setval: PropTypes.func,
+  name: PropTypes.string,
 }
 
 export default DragyDrop

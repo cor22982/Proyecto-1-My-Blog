@@ -19,6 +19,23 @@ const useApi = (link) => {
     setError(data);
   };
 
+  const llamadowithheader = async (headers,body,metodo) => {
+    const fetchOptions = {
+      method: metodo,
+      body: JSON.stringify(body),
+      headers: {
+        'Content-Type': 'application/json',
+        ...Object.fromEntries(headers.map(header => [header.title, header.value]))
+      }
+    };
+    const response = await fetch(link, fetchOptions);
+    const data = await response.json();
+    if (response.ok) {
+      return data;
+    }
+    setError(data);
+  };
+
   const llamadowithoutbody = async (metodo) => {
     const fetchOptions = {
       method: metodo,
@@ -34,7 +51,7 @@ const useApi = (link) => {
     setError(data);
   }
 
-  return { error, llamado, llamadowithoutbody };
+  return { error, llamado, llamadowithoutbody, llamadowithheader };
 };
 
 export default useApi;
