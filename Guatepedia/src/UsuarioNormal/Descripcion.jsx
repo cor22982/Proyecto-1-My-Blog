@@ -38,12 +38,18 @@ const Descripcion = ({click, postid}) => {
         <img src={postunico.images} className='imagen-contenido'></img>
         
       </div>
-      <h2 className='titulo2-contenido'>Eventos</h2>
-          <p className='contenido-contenido'>{postunico.crucial_events}</p> 
+          <h2 className='titulo2-contenido'>Eventos</h2>
+          {postunico.crucial_events && postunico.crucial_events.split('\n').map((line, index) => (
+            <p key={index} className='contenido-contenido'>{line}</p>
+          ))} 
           <h2 className='titulo2-contenido'>Curiosidades</h2>
-          <p className='contenido-contenido'>{postunico.curiosities}</p> 
+          {postunico.curiosities && postunico.curiosities.split('\n').map((line, index) => (
+            <p key={index} className='contenido-contenido'>{line}</p>
+          ))} 
           <h2 className='titulo2-contenido'>{postunico.alternativetext}</h2>
-          <p className='contenido-contenido'>{postunico.alternativedescription}</p>
+          {postunico.alternativedescription && postunico.alternativedescription.split('\n').map((line, index) => (
+            <p key={index} className='contenido-contenido'>{line}</p>
+          ))} 
           <h2 className='titulo2-contenido'>Referencias</h2>
           <a href={postunico.text_references}>Link de referencia</a>
     </div>
