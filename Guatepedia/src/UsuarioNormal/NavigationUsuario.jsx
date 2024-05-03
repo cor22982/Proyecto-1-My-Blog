@@ -20,9 +20,12 @@ const NavigationUsuario = () => {
   let clickear 
   if(rutas[page].onclick){
     clickear = () => {
-      navigate('/') 
+      navigate('/')
+      window.history.pushState(null, '', '/');  
     }
-    return (  
+    window.history.pushState(null, '', `/descripcion/${post}`); 
+    return (
+        
       <div>
         <CurrentPage click={clickear} postid={post.toString()}/>
       </div>

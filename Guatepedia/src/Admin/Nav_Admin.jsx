@@ -27,15 +27,23 @@ const Nav_Admin = () => {
 
   const nav_to = (item) => {
     navigate(item);
+    window.history.pushState(null, '', `/admin${item}`); 
   };
 
   const exit = () => {
+    window.history.pushState(null, '', '/'); 
     window.location.reload();
   }
 
   const clickear = () => {
+    window.history.pushState(null, '', '/admin/'); 
     navigate('/') 
   }
+
+  if (routes[page].onclick) {
+    window.history.pushState(null, '', `/admin/editar/${post}`);
+  }
+  
   
   return (
     <div className="principal">

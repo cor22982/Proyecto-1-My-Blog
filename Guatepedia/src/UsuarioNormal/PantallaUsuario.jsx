@@ -9,11 +9,13 @@ const PantallaUsuario = () => {
   const { navigate } = useNavigate()
   const home = () => {
     navigate('/')
+    window.history.pushState(null, '', '/');
     
   }
 
   const iniciar = () => {
     navigate('/admin')
+    window.history.pushState(null, '', '/admin');
   }
   return (
     <div className="principal">

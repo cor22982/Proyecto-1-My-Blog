@@ -31,6 +31,7 @@ const Login = () => {
     const {acces_token} = await llamado (formData, 'POST')
     setToken(acces_token)
     navigate('/admin')
+    window.history.pushState(null, '', '/admin'); 
   }
 
   return (

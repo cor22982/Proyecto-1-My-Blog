@@ -46,7 +46,8 @@ const Editar = ({click, postid}) => {
     ];
     const {success} = await llamadowithheaderwithoutbody(headers,'DELETE')
     if(success){
-      navigate('/') 
+      navigate('/')
+      window.history.pushState(null, '', `/admin/`);  
       alert('Eliminación exitosa');
     }else{
       alert('No se puede eliminar un error ha ocurrido');
