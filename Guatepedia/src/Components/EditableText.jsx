@@ -2,12 +2,12 @@ import  { useState } from 'react';
 import './EditableText.css'
 import PropTypes from 'prop-types';
 
-const EditableText = ({ text, onSave }) => {
+const EditableText = ({ text, onSave, type }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [value, setValue] = useState(text);
 
-  const handleSave = () => {
-    onSave(value); // Llamar a onSave con el nuevo valor para guardarlo
+  const handleSave = async () => {
+    await onSave(value, type)
     setIsEditing(false);
   }; 
 
@@ -39,7 +39,7 @@ const EditableText = ({ text, onSave }) => {
       ) : (
         <div className='edit-texteo'>
           <div className='texto-editable' onClick={edit}>{value}</div>  
-        </div>
+        </div>  
         
         
       )}
@@ -49,7 +49,8 @@ const EditableText = ({ text, onSave }) => {
 
 EditableText.propTypes = {
   text: PropTypes.string,
-  onSave: PropTypes.func
+  onSave: PropTypes.func,
+  type: PropTypes.string,
 }
 
 export default EditableText;

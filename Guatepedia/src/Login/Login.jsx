@@ -42,7 +42,7 @@ const Login = () => {
           icono={faUser} 
           type= "text"
           titulo= "Usuario administrador"
-          value={values.username}
+          value={values.username} 
           onChange={(value) => {setValue('username', value)}}
           ></TextInput>
         <TextInput 

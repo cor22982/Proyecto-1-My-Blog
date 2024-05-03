@@ -24,7 +24,7 @@ const NavigationUsuario = () => {
     }
     return (  
       <div>
-        <CurrentPage click={clickear} postid={post}/>
+        <CurrentPage click={clickear} postid={post.toString()}/>
       </div>
     );
   }

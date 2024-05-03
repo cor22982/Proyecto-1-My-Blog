@@ -12,7 +12,7 @@ const TextInput = ({icono,  type,onChange,value, titulo}) => {
         />
       <FontAwesomeIcon icon={icono} className="icon" />
     </div>
-  ) 
+  )  
 }
 
 TextInput.propTypes = {

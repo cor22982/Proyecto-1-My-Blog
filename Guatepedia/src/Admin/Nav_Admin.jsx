@@ -63,7 +63,7 @@ const Nav_Admin = () => {
       </div>
       <div className="contenido">
         {(routes[page].onclick) ? (
-          <CurrentPage click={clickear} postid={post}/>
+          <CurrentPage click={clickear} postid={post.toString()}/>
         ) : (
           <CurrentPage setpostid={setPost}/>
         )

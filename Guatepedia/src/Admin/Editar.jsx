@@ -11,10 +11,11 @@ import Boton from '../Components/Boton';
 import useToken from '@hooks/useToken'
 import useNavigate from '@hooks/useNavigate';
 
+
 const Editar = ({click, postid}) => {
   const [editimage, setEditImage] = useState(false)
   const { token } = useToken()
-
+  const [image, setImage] = useState('')
   const save = () => {
     console.log('guardado')
   }
@@ -23,7 +24,14 @@ const Editar = ({click, postid}) => {
     setEditImage(true)
   }
 
-  const {  llamadowithoutbody, llamadowithheaderwithoutbody } = useApi(`http://api.web05.lol/22982/posts/${postid}`);
+  const uploadimage = (name,value) => {
+    if(name === 'images'){
+      setImage(value)
+    }
+    
+  }
+
+  const {  llamadowithoutbody, llamadowithheaderwithoutbody, llamadowithheader } = useApi(`http://api.web05.lol/22982/posts/${postid}`);
   const [postunico , setpostunico] = useState({})
   const { navigate } = useNavigate();
   useEffect(() => {
@@ -42,7 +50,35 @@ const Editar = ({click, postid}) => {
     const {success} = await llamadowithheaderwithoutbody(headers,'DELETE')
     if(success){
       navigate('/') 
+      alert('Eliminación exitosa');
+    }else{
+      alert('No se puede eliminar un error ha ocurrido');
     }
+  }
+
+  const editarOn = async (value,type) => {
+    const body = {
+      columna: type,
+      valor: value,
+    }
+    const headers = [
+      { title: 'authorization', value: token }
+    ];
+    const {success} = await llamadowithheader(headers,body,'PUT')
+    console.log(success)
+  }
+
+  const upload = async () => {
+    const body = {
+      columna: "images",
+      valor: image,
+    }
+    const headers = [
+      { title: 'authorization', value: token }
+    ];
+    const {success} = await llamadowithheader(headers,body,'PUT')
+    console.log(success)
+    setEditImage(false)
   }
 
   return( 
@@ -60,17 +96,28 @@ const Editar = ({click, postid}) => {
           <h1 className='titulo-contenido'>{postunico.pearson}</h1>
           <h2 className='titulo2-contenido'>Descripcion</h2>
           {postunico.fecha && (
-            <EditableText text={postunico.few_description} onSave={save}></EditableText>
+            <EditableText 
+              text={postunico.few_description} 
+              onSave={editarOn}
+              type = "few_description"></EditableText>
           )}
           <h2 className='titulo2-contenido'>Historia</h2>
           {postunico.fecha && (
-            <EditableText text={postunico.history} onSave={save}></EditableText>
+            <EditableText 
+            text={postunico.history} 
+            onSave={save}
+            type="history"></EditableText>
           )}
         </div>
         <div onClick={editimageonclik} className='clase-onclick'> 
           {editimage ? (
-            <DragyDrop
-            size="300px"></DragyDrop>
+            <div>
+              <DragyDrop
+                size="300px"
+                setval={uploadimage}
+                name="images"></DragyDrop>
+              <Boton nombre= "Actualizar" onClick={upload}></Boton>
+            </div> 
           ) : (
             <img src={postunico.images} className='imagen-contenido'></img> 
           )
@@ -79,25 +126,40 @@ const Editar = ({click, postid}) => {
       </div>
       <h2 className='titulo2-contenido'>Eventos</h2>
       {postunico.fecha && (
-            <EditableText text={postunico.crucial_events} onSave={save}></EditableText>
+            <EditableText 
+              text={postunico.crucial_events} 
+              onSave={save}
+              type="crucial_events"></EditableText>
       )}
       <h2 className='titulo2-contenido'>Curiosidades</h2>
       {postunico.fecha && (
-          <EditableText text={postunico.curiosities} onSave={save}></EditableText>
+          <EditableText 
+            text={postunico.curiosities} 
+            onSave={save}
+            type="curiosities"></EditableText>
       )}
       <h2 className='titulo2-contenido'>Titulo Alternativo</h2>
       {postunico.fecha && (
-          <EditableText text={postunico.alternativetext} onSave={save}></EditableText>
+          <EditableText 
+            text={postunico.alternativetext} 
+            onSave={save}
+            type="alternativetext"></EditableText>
       )}
       <h2 className='titulo2-contenido'>Descripcion Alternativa</h2>
       {postunico.fecha && (
-          <EditableText text={postunico.alternativedescription} onSave={save}></EditableText>
+          <EditableText 
+            text={postunico.alternativedescription} 
+            onSave={save}
+            type="alternativedescription"></EditableText>
       )}
       
       
       <h2 className='titulo2-contenido'>Referencias</h2>
       {postunico.fecha && (
-          <EditableText text={postunico.text_references} onSave={save}></EditableText>
+          <EditableText 
+            text={postunico.text_references} 
+            onSave={save}
+            type="text_references"></EditableText>
       )}
       <br></br>
       <br></br>
