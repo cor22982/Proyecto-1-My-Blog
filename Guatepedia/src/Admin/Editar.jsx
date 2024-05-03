@@ -16,9 +16,6 @@ const Editar = ({click, postid}) => {
   const [editimage, setEditImage] = useState(false)
   const { token } = useToken()
   const [image, setImage] = useState('')
-  const save = () => {
-    console.log('guardado')
-  }
 
   const editimageonclik = () => {
     setEditImage(true)
@@ -105,7 +102,7 @@ const Editar = ({click, postid}) => {
           {postunico.fecha && (
             <EditableText 
             text={postunico.history} 
-            onSave={save}
+            onSave={editarOn}
             type="history"></EditableText>
           )}
         </div>
@@ -128,28 +125,28 @@ const Editar = ({click, postid}) => {
       {postunico.fecha && (
             <EditableText 
               text={postunico.crucial_events} 
-              onSave={save}
+              onSave={editarOn}
               type="crucial_events"></EditableText>
       )}
       <h2 className='titulo2-contenido'>Curiosidades</h2>
       {postunico.fecha && (
           <EditableText 
             text={postunico.curiosities} 
-            onSave={save}
+            onSave={editarOn}
             type="curiosities"></EditableText>
       )}
       <h2 className='titulo2-contenido'>Titulo Alternativo</h2>
       {postunico.fecha && (
           <EditableText 
             text={postunico.alternativetext} 
-            onSave={save}
+            onSave={editarOn}
             type="alternativetext"></EditableText>
       )}
       <h2 className='titulo2-contenido'>Descripcion Alternativa</h2>
       {postunico.fecha && (
           <EditableText 
             text={postunico.alternativedescription} 
-            onSave={save}
+            onSave={editarOn}
             type="alternativedescription"></EditableText>
       )}
       
@@ -158,7 +155,7 @@ const Editar = ({click, postid}) => {
       {postunico.fecha && (
           <EditableText 
             text={postunico.text_references} 
-            onSave={save}
+            onSave={editarOn}
             type="text_references"></EditableText>
       )}
       <br></br>
