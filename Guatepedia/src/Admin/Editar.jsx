@@ -8,9 +8,13 @@ import EditableText from '@components/EditableText';
 import './Editar.css'
 import DragyDrop from '@components/DragyDrop';
 import Boton from '../Components/Boton';
+import useToken from '@hooks/useToken'
+import useNavigate from '@hooks/useNavigate';
 
 const Editar = ({click, postid}) => {
   const [editimage, setEditImage] = useState(false)
+  const { token } = useToken()
+
   const save = () => {
     console.log('guardado')
   }
@@ -19,8 +23,9 @@ const Editar = ({click, postid}) => {
     setEditImage(true)
   }
 
-  const {  llamadowithoutbody } = useApi(`http://api.web05.lol/22982/posts/${postid}`);
+  const {  llamadowithoutbody, llamadowithheaderwithoutbody } = useApi(`http://api.web05.lol/22982/posts/${postid}`);
   const [postunico , setpostunico] = useState({})
+  const { navigate } = useNavigate();
   useEffect(() => {
     const fetchData = async () => {
       const data = await llamadowithoutbody('GET');
@@ -29,6 +34,17 @@ const Editar = ({click, postid}) => {
 
     fetchData();
   }, [llamadowithoutbody]);
+
+  const eliminar = async () => {
+    const headers = [
+      { title: 'authorization', value: token }
+    ];
+    const {success} = await llamadowithheaderwithoutbody(headers,'DELETE')
+    if(success){
+      navigate('/') 
+    }
+  }
+
   return( 
     <div>
       <div className='tituloboton'>
@@ -86,7 +102,9 @@ const Editar = ({click, postid}) => {
       <br></br>
       <br></br>
       <br></br>
-      <Boton nombre= "ELIMINAR"></Boton>
+      <Boton nombre= "ELIMINAR" onClick={eliminar}></Boton>
+      <br></br>
+      <br></br>
     </div>
   )
 } 
