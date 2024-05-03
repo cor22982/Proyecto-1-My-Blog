@@ -10,7 +10,7 @@ const rutas = {
   '/descripcion':{
     component: Descripcion,
     onclick: () => {}
-  },
+  }, 
 };
 
 const NavigationUsuario = () => {
@@ -22,7 +22,7 @@ const NavigationUsuario = () => {
     clickear = () => {
       navigate('/') 
     }
-    return ( 
+    return (  
       <div>
         <CurrentPage click={clickear} postid={post}/>
       </div>

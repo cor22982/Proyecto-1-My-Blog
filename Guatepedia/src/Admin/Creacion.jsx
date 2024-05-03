@@ -6,7 +6,6 @@ import { object, string } from 'yup'
 import useToken from '@hooks/useToken'
 import useForm from '@hooks/useForm'
 import useApi from '@hooks/useApi';
-import EditableText from '../Components/EditableText';
 
 
 const schema = object({
@@ -39,9 +38,7 @@ const Creacion = () => {
     }
   }
 
-  const handleSave = (newValue) => {
-    console.log(newValue); // Hacer algo con el nuevo valor
-  };
+ 
   
 
   return (
@@ -86,14 +83,16 @@ const Creacion = () => {
         <br></br>
         <DragyDrop
           setval={setValue}
-          name="images"></DragyDrop>
+          name="images"
+          size="750px"></DragyDrop>
         <br></br>
-        <br></br>
+        
         <TextInputPost
           placeholder="Referencia"
           altura= "35px"
           value={values.Textreferences}
           onChange={(value) => {setValue('Textreferences', value)}}></TextInputPost>
+        
         <Boton
           nombre="POSTEAR"
           onClick={postear}></Boton>

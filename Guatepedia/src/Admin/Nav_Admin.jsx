@@ -1,9 +1,10 @@
 import MenuButton from '@components/MenuButton';
 import { faHome, faPlus, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import Creacion from './Creacion';
-import Inicio from './Inicio';
 import useNavigate from '@hooks/useNavigate';
 import Posts from '../UsuarioNormal/Posts';
+import Editar from './Editar';
+import { useState } from 'react';
 
 const routes = {
   '/': {
@@ -12,11 +13,16 @@ const routes = {
   '/postear': {
     component: Creacion,
   },
+  '/descripcion': {
+    component: Editar,
+    onclick: () => {}
+  }, 
+
 };
 
 const Nav_Admin = () => {
+  const [post, setPost] = useState(null)
   const { page, navigate } = useNavigate();
-
   const CurrentPage = routes[page]?.component || (() => <h1>404</h1>);
 
   const nav_to = (item) => {
@@ -27,6 +33,10 @@ const Nav_Admin = () => {
     window.location.reload();
   }
 
+  const clickear = () => {
+    navigate('/') 
+  }
+  
   return (
     <div className="principal">
       <div className="menu">
@@ -52,7 +62,12 @@ const Nav_Admin = () => {
         />
       </div>
       <div className="contenido">
-        <CurrentPage />
+        {(routes[page].onclick) ? (
+          <CurrentPage click={clickear} postid={post}/>
+        ) : (
+          <CurrentPage setpostid={setPost}/>
+        )
+        }
       </div>
     </div>
   );

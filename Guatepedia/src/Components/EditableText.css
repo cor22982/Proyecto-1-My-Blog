@@ -24,10 +24,15 @@
 }
 
 .texto-editable {
-  max-width: 750px; /* Establece el ancho máximo */
-  overflow: hidden; /* Oculta el contenido que excede el ancho */
-  white-space: pre-wrap; /* Conserva los saltos de línea y permite el ajuste de texto */
-  word-wrap: break-word; /* Permite que el texto se divida en varias líneas */
+  max-width: 750px;
+  overflow: hidden;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  cursor: pointer;
+}
+
+.texto-editable:hover{
+  color: white;
 }
 
 .contenedor-edit{
@@ -57,7 +62,7 @@
 .boton-edit:hover{
   border: 2px solid #418fee;
   
-}
+} 
 
 .icono-edit-1{
   display: flex;

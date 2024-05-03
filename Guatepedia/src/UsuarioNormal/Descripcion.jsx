@@ -35,9 +35,9 @@ const Descripcion = ({click, postid}) => {
           <h2 className='titulo2-contenido'>Historia</h2>
           <p className='contenido-contenido'>{postunico.history}</p> 
         </div>
-        <img src={postunico.images} className='imagen-contenido'></img>
-        
+        <img src={postunico.images} className='imagen-contenido'></img> 
       </div>
+      
           <h2 className='titulo2-contenido'>Eventos</h2>
           {postunico.crucial_events && postunico.crucial_events.split('\n').map((line, index) => (
             <p key={index} className='contenido-contenido'>{line}</p>

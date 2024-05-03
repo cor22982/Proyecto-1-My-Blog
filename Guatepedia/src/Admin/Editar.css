@@ -1,0 +1,7 @@
+.clase-onclick{
+  cursor: pointer;
+}
+
+.clase-onclick:hover{
+  border: 2px solid #418fee;
+}

@@ -2,7 +2,7 @@ import './DragyDrop.css'
 import { useState, useRef } from 'react'
 import PropTypes from 'prop-types';
 
-const DragyDrop = ({setval, name}) => {
+const DragyDrop = ({setval, name, size}) => {
   const [images, setImages] = useState([])
   const [isDragging, setIsDragging] = useState(false)
   const fileInputRef = useRef(null)
@@ -83,7 +83,7 @@ const DragyDrop = ({setval, name}) => {
   
 
   return (
-    <div className="card">
+    <div className="card" style={{ width: size}}>
       <div className="top">
         <p>Imagen Post</p>
       </div>
@@ -133,6 +133,7 @@ const DragyDrop = ({setval, name}) => {
 DragyDrop.propTypes = {
   setval: PropTypes.func,
   name: PropTypes.string,
+  size: PropTypes.string,
 }
 
 export default DragyDrop

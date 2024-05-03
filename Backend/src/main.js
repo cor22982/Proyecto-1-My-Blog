@@ -119,12 +119,12 @@ app.put('/posts/:postId', async (req, res) => {
         columna,
         valor,
       } = req.body
-      const result = await editOnePost(
+      await editOnePost(
         postId,
-        columna,
+        columna, 
         valor,
       )
-      res.status(200).json(result)
+      res.status(200).json({"success": true})
     } catch (error) {
       res.status(500).json({ error: 'Error del servidor.' })
     }
@@ -136,8 +136,8 @@ app.delete('/posts/:postId', async (req, res) => {
   if (validateToken(authorization)){  
     try {
       const { postId } = req.params
-      const post = await deletePost(postId)
-      res.status(200).json(post)
+      await deletePost(postId)
+      res.status(200).json({"success": true})
     } catch (error) {
       res.status(500).json({ error: 'Error del servidor.' })
     }
