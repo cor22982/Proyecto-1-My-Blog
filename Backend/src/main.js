@@ -1,6 +1,6 @@
-import express from 'express'
-import { validationResult } from 'express-validator'
-import cors from 'cors'
+import express from 'express';
+import { validationResult } from 'express-validator';
+import cors from 'cors';
 import {
   getAllPosts,
   getOnePost,
@@ -9,76 +9,75 @@ import {
   deletePost,
   login,
 // eslint-disable-next-line import/extensions
-} from './db.js'
+} from './db.js';
 
 import {
-  generateToken, 
+  generateToken,
   validateToken,
-} from './jwt.js'
+} from './jwt.js';
 
-const app = express()
+const app = express();
 const validateRequest = (req, res, next) => {
-  const errors = validationResult(req)
+  const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: 'No mandaste los campos correctos' })
+    return res.status(400).json({ errors: 'No mandaste los campos correctos' });
   }
-  return next()
-}
+  return next();
+};
 
-app.use(express.json())
-app.use(cors())
+app.use(express.json());
+app.use(cors());
 
 app.get('/posts', async (req, res) => {
   try {
-    const posts = await getAllPosts()
-    res.status(200).json(posts)
+    const posts = await getAllPosts();
+    res.status(200).json(posts);
   } catch (error) {
-    res.status(500).json({ error: error.message })
+    res.status(500).json({ error: error.message });
   }
-})
+});
 app.get('/posts/:postId', async (req, res) => {
   try {
-    const { postId } = req.params
-    const post = await getOnePost(postId)
-    res.status(200).json(post)
+    const { postId } = req.params;
+    const post = await getOnePost(postId);
+    res.status(200).json(post);
   } catch (error) {
-    res.status(500).json({ error: 'Error interno del servidor' })
+    res.status(500).json({ error: 'Error interno del servidor' });
   }
-})
+});
 
-const PORT = 22982
+const PORT = 22982;
 app.listen(PORT, () => {
-  console.log(`Server listening at http://127.0.0.1:${PORT}`)
-})
+  console.log(`Server listening at http://127.0.0.1:${PORT}`);
+});
 
 app.get('/', (req, res) => {
-  res.send('Hello from API BLOG')
-})
-app.use(validateRequest)
-
+  res.send('Hello from API BLOG');
+});
+app.use(validateRequest);
 
 app.post('/login', async (req, res) => {
-  const { username, password } = req.body
-  const success = await login(username, password)
-  console.log('success', success)
+  const { username, password } = req.body;
+  const success = await login(username, password);
+  console.log('success', success);
   if (success) {
-    const user =  {
+    const user = {
       id: success.id,
-      username: username
-    }
-    const token = generateToken(user)
-    res.status(200)
-    res.json({"success": true, acces_token: token})
-    return
+      username,
+    };
+    const token = generateToken(user);
+    res.status(200);
+    res.json({ success: true, acces_token: token });
+    return;
   }
 
-  res.status(401)
-  res.send('{ "message": "not logged in" }')
-})
+  res.status(401);
+  res.send('{ "message": "not logged in" }');
+});
 
 app.post('/posts', async (req, res) => {
-  const { authorization } = req.headers
-  if (validateToken(authorization)){
+  const { authorization } = req.headers;
+  if (validateToken(authorization)) {
     try {
       const {
         Pearson,
@@ -90,8 +89,8 @@ app.post('/posts', async (req, res) => {
         AlternativeDescription,
         Textreferences,
         images,
-      } = req.body
-      const result = await createPost(
+      } = req.body;
+      await createPost(
         Pearson,
         Fewdescription,
         History,
@@ -101,51 +100,53 @@ app.post('/posts', async (req, res) => {
         AlternativeDescription,
         Textreferences,
         images,
-      )
-      res.status(200).json({"success": true})
+      );
+      res.status(200).json({ success: true });
     } catch (error) {
-      res.status(500).json({ error: 'Error interno del servidor' })
-      console.log(error.message)
+      res.status(500).json({ error: 'Error interno del servidor' });
+      console.log(error.message);
     }
   }
-})
+});
 
 app.put('/posts/:postId', async (req, res) => {
-  const { authorization } = req.headers
-  if (validateToken(authorization)){
+  const { authorization } = req.headers;
+  if (validateToken(authorization)) {
     try {
-      const { postId } = req.params
+      const { postId } = req.params;
       const {
         columna,
         valor,
-      } = req.body
+      } = req.body;
       await editOnePost(
         postId,
-        columna, 
+        columna,
         valor,
-      )
-      res.status(200).json({"success": true})
+      );
+      res.status(200).json({ success: true });
     } catch (error) {
-      res.status(500).json({ error: 'Error del servidor.' })
+      res.status(500).json({ error: 'Error del servidor.' });
+      console.log(error.message);
     }
   }
-})
+});
 
 app.delete('/posts/:postId', async (req, res) => {
-  const { authorization } = req.headers
-  if (validateToken(authorization)){  
+  const { authorization } = req.headers;
+  if (validateToken(authorization)) {
     try {
-      const { postId } = req.params
-      await deletePost(postId)
-      res.status(200).json({"success": true})
+      const { postId } = req.params;
+      await deletePost(postId);
+      res.status(200).json({ success: true });
     } catch (error) {
-      res.status(500).json({ error: 'Error del servidor.' })
+      res.status(500).json({ error: 'Error del servidor.' });
+      console.log(error.message);
     }
-    return 
+    return;
   }
-  res.status(403)
-  res.json([])
-})
+  res.status(403);
+  res.json([]);
+});
 app.use((req, res) => {
-  res.status(501).json({ error: 'Método no implementado' })
-})
+  res.status(501).json({ error: 'Método no implementado' });
+});

@@ -2,26 +2,21 @@ import jwt from 'jsonwebtoken';
 
 const SECRET = 'es un secreto tu mirada y la mia';
 
-const generateToken = (user) => {
-  return jwt.sign(user, SECRET, { expiresIn: '50h', algorithm: 'HS256' });
-};
+const generateToken = (user) => jwt.sign(user, SECRET, { expiresIn: '50h', algorithm: 'HS256' });
 
 const validateToken = (token) => {
   try {
     return jwt.verify(token, SECRET);
-  } 
-  catch(e) {
+  } catch (e) {
     console.error('Invalid token', e);
-    return false
-  };
-}
+    return false;
+  }
+};
 
 const decodeToken = (token) => {
-  try{
+  try {
     return jwt.decode(token);
-  }  
-  catch (error) {
-    console.error('Error decoding token:', error);
+  } catch (error) {
     return null;
   }
 };
