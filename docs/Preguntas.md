@@ -1,6 +1,8 @@
 # Preguntas
 [Puedo publicar algo?](#Puedo-publicar-algo?)
+
 [Como es la estructura del folder?](#Como-es-la-estructura-del-folder?)
+
 [Que hace cada script?](#Que-hace-cada-script?)
 ---
 
