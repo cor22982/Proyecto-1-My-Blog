@@ -132,5 +132,5 @@ Las tecnologias que se utilizar para desarrollar este blog fueron las siguientes
 |  [Yup](https://www.npmjs.com/package/yup) | Libreria para evaluacion de formularios | Se uso para evaluar los inputs de los formularios. |
 
 ## Preguntas
-Ve aqui para ver las preguntas y respuestas 
+[Ve aqui para ver las preguntas y respuestas](./docs/Preguntas.md) 
 
