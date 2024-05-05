@@ -8,7 +8,6 @@ import {
   editOnePost,
   deletePost,
   login,
-// eslint-disable-next-line import/extensions
 } from './db.js';
 
 import {
