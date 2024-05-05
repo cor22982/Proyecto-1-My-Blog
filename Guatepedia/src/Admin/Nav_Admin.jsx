@@ -5,6 +5,7 @@ import useNavigate from '@hooks/useNavigate';
 import Posts from '../UsuarioNormal/Posts';
 import Editar from './Editar';
 import { useState } from 'react';
+import './Nav_Admin.css'
 
 const routes = {
   '/': {
@@ -24,15 +25,14 @@ const Nav_Admin = () => {
   const [post, setPost] = useState(null)
   const { page, navigate } = useNavigate();
   const CurrentPage = routes[page]?.component || (() => <h1>404</h1>);
-
   const nav_to = (item) => {
     navigate(item);
     window.history.pushState(null, '', `/admin${item}`); 
   };
 
   const exit = () => {
-    window.history.pushState(null, '', '/'); 
-    window.location.reload();
+    window.history.pushState(null, '', '/');
+    window.location.reload(); 
   }
 
   const clickear = () => {

@@ -19,7 +19,7 @@ const Login = () => {
   const { navigate } = useNavigate()
   const { setToken } = useToken() 
   const { values, setValue, validate, errors } = useForm(schema)
-  const { error, llamado } = useApi('http://api.web05.lol/22982/login');
+  const { error, llamado,setError } = useApi('http://api.web05.lol/22982/login');
 
 
 
@@ -28,10 +28,17 @@ const Login = () => {
       acc[key] = key === 'password' ? md5(values[key]) : values[key];
       return acc;
     }, {});
-    const {acces_token} = await llamado (formData, 'POST')
-    setToken(acces_token)
-    navigate('/admin')
-    window.history.pushState(null, '', '/admin'); 
+    if(await validate()){
+      try{
+        const {acces_token} = await llamado (formData, 'POST')
+        setToken(acces_token)
+        navigate('/admin')
+        window.history.pushState(null, '', '/admin'); 
+      }catch(e){
+        console.log(error)
+      }
+    }
+    
   }
 
   return (
@@ -46,6 +53,7 @@ const Login = () => {
           value={values.username} 
           onChange={(value) => {setValue('username', value)}}
           ></TextInput>
+         { errors.username && <span className="er">{errors.username}</span> }
         <TextInput 
           icono={faLock} 
           type= "password"
@@ -53,7 +61,15 @@ const Login = () => {
           value={values.password}
           onChange={(value) => {setValue('password', value)}}
           ></TextInput>
+        { errors.password && <span className="er">{errors.password}</span> }
         <Boton nombre="Iniciar Sesion" onClick={loguearse}></Boton>
+        {
+          error !== null ? (
+          <div className='error-message' onClick={() => setError(null)}>
+          La contraseña o el password es incorrecta
+          </div>
+        ) : null
+        }
       </div>
     </div>
   )

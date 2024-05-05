@@ -26,7 +26,6 @@ const Indice_Nav = () => {
   const { page, navigate } = useNavigate()
   let CurrentPage = () => <h1>404</h1>
   if (routes[page] && routes[page].requiresAuth && !token) {
-    
     navigate('/login')
     window.history.pushState(null, '', '/login'); 
   }

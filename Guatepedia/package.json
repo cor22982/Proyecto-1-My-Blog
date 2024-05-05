@@ -16,6 +16,7 @@
     "js-md5": "^0.8.3",
     "react": "^18.3.1",
     "react-dom": "^18.2.0",
+    "react-loading-skeleton": "^3.4.0",
     "yup": "^1.4.0"
   },
   "devDependencies": {

@@ -6,6 +6,8 @@
 }
 
 .menu {
+  position: fixed;
+  height: 100vh;
   grid-column: 1;
   border-right: 1px solid #3c4345; /* Borde blanco solo en el lado derecho */
 }

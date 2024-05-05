@@ -67,7 +67,7 @@ const useApi = (link) => {
     setError(data);
   }
 
-  return { error, llamado, llamadowithoutbody, llamadowithheader, llamadowithheaderwithoutbody };
+  return { error, llamado, llamadowithoutbody, llamadowithheader, llamadowithheaderwithoutbody,setError };
 };
 
 export default useApi;
