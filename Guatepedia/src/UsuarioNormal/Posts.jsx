@@ -11,7 +11,7 @@ const Posts = ({setpostid}) => {
     navigate('/descripcion')
     
   }
-  const {  llamadowithoutbody } = useApi('http://api.web05.lol/22982/posts');
+  const {  llamadowithoutbody } = useApi('https://api.web05.lol/22982/posts');
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     const fetchData = async () => {

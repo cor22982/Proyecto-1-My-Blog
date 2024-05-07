@@ -28,7 +28,7 @@ const Editar = ({click, postid}) => {
     
   }
 
-  const {  llamadowithoutbody, llamadowithheaderwithoutbody, llamadowithheader } = useApi(`http://api.web05.lol/22982/posts/${postid}`);
+  const {  llamadowithoutbody, llamadowithheaderwithoutbody, llamadowithheader } = useApi(`https://api.web05.lol/22982/posts/${postid}`);
   const [postunico , setpostunico] = useState({})
   const { navigate } = useNavigate();
   useEffect(() => {

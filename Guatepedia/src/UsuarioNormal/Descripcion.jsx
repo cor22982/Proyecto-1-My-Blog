@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import useApi from '@hooks/useApi';
 
 const Descripcion = ({click, postid}) => {
-  const {  llamadowithoutbody } = useApi(`http://api.web05.lol/22982/posts/${postid}`);
+  const {  llamadowithoutbody } = useApi(`https://api.web05.lol/22982/posts/${postid}`);
   const [postunico , setpostunico] = useState({})
   useEffect(() => {
     const fetchData = async () => {
