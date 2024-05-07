@@ -9,5 +9,6 @@ export default defineConfig({
       '@components': '/src/Components',
       '@hooks': '/src/hooks'
     }
-  } 
+  },
+  base: '', 
 })
