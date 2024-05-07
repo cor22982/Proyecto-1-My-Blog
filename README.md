@@ -11,7 +11,7 @@ Guatepedia es un blog personal que muestra todas las personalidades de internet 
 Este blog nacio como parte de un post de r/guatemala. Para que se documente todas las personalidades de las que se han llegado hablar en el reditt. Cualquier descripcion es valida en este blog.
 
 ## Como empezar  
-[Accede al blog por este enlace](https://tiburoncin.lat/22982/Lab6_React/Guatepedia.html)
+[Accede al blog por este enlace](https://web05.lol/blog/dist/index.html)
 
 
 ## Funcionamiento API
