@@ -131,6 +131,11 @@ Las tecnologias que se utilizar para desarrollar este blog fueron las siguientes
 |  [AWS](https://aws.amazon.com) | Servicio de Amazon de hostin y mas | Se uso para crear un servidor y alojar el api de la web |
 |  [Yup](https://www.npmjs.com/package/yup) | Libreria para evaluacion de formularios | Se uso para evaluar los inputs de los formularios. |
 
+## Iniciar Sesion
+usuario: admin 
+password: administrador
+
+
 ## Preguntas
 [Ve aqui para ver las preguntas y respuestas](./docs/Preguntas.md) 
 
