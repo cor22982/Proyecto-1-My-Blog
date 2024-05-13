@@ -31,7 +31,7 @@ const Nav_Admin = () => {
   };
 
   const exit = () => {
-    window.history.pushState(null, '', '/blog/dist/index.html');
+    window.history.pushState(null, '', '/');
     window.location.reload(); 
   }
 
