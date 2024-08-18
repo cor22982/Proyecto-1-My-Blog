@@ -10,7 +10,7 @@ const DragyDrop = ({setval, name, size}) => {
   const selectFiles = () => {
     fileInputRef.current.click()
   }
-
+     
   const deleteimage = (index) => {
     setImages(prevImages => prevImages.filter((_, i) => i !== index));
   };
